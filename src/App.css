@@ -8,8 +8,8 @@
   --light-green: #2D6A4F;
   --pale: #F0EBE3;
 }
-html { scroll-behavior: smooth; }
-body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--brown); overflow-x: hidden; }
+html { scroll-behavior: smooth; max-width: 100%; overflow-x: hidden; }
+body { font-family: 'Poppins', sans-serif; background: var(--cream); color: var(--brown); max-width: 100%; overflow-x: hidden; }
 
 /* NAVBAR */
 nav {
@@ -486,115 +486,113 @@ footer {
 .reveal-right { opacity: 0; transform: translateX(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-/* RESPONSIVE DESIGN - MOBILE WALA JADU (UPDATED WITH FLEX ORDER) */
+/* MOBILE RESPONSIVE WALA JADU (Sab Kuch Scaled Down) */
 @media (max-width: 768px) {
-  /* Typography & Spacing */
-  .section-title { font-size: 2.2rem; margin-bottom: 1rem; }
-  #products, #why, #process, #testimonials, #gallery, #faq, #contact { padding: 4rem 5%; }
+  /* General Padding & Typography */
+  .section-title { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .about-tag { font-size: 0.65rem; }
+  .about-text, p, .faq-a { font-size: 0.8rem !important; line-height: 1.6; }
+  #about, #products, #why, #process, #testimonials, #gallery, #faq, #contact { padding: 2.5rem 4%; } /* Reduced padding */
+
+  /* Header & Navbar - Making all tabs visible */
+  .top-header { padding: 0.4rem; font-size: 0.65rem; flex-direction: column; gap: 0.3rem; }
+  nav { flex-direction: column; padding: 0.8rem 2%; gap: 0.5rem; }
+  .nav-logo { font-size: 1.3rem; }
+  .nav-links { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.6rem; width: 100%; }
+  .nav-links a { font-size: 0.65rem; font-weight: 600; padding: 0.2rem; }
+  .nav-cta { display: none; }
+
+  /* Hero */
+  #hero { padding-top: 5rem; }
+  .hero-title { font-size: 2.5rem; margin-top: 1rem; }
+  .hero-subtitle { font-size: 0.8rem; }
+  .hero-btns { flex-direction: column; gap: 0.5rem; padding: 0 1rem; }
+  .btn-primary, .btn-secondary { font-size: 0.75rem; padding: 0.7rem; width: 100%; }
+  .hero-badge { font-size: 0.6rem; padding: 0.3rem 0.8rem; margin-bottom: 1rem; }
+
+  /* About */
+  #about { display: flex; flex-direction: column; gap: 1.5rem; }
+  .reveal-left { display: flex; flex-direction: column; }
+  .reveal-left > .about-tag, .reveal-left > .section-title, .reveal-left > .about-text { order: 1; }
+  .jar-visual { display: flex; order: 2; transform: scale(0.7); margin: 0; }
+  .about-stats { order: 3; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0; width: 100%; }
+  .stat-box { border-left: none; border-top: 2px solid var(--gold); padding-left: 0; padding-top: 0.5rem; text-align: center; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: 0.65rem; }
+
+  /* Products - Double Column */
+  .products-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem; }
+  .product-card { min-width: 0; } /* allows shrinking in grid */
+  .product-card .card-img { height: 100px; font-size: 2.5rem; }
+  .product-card .card-body { padding: 0.8rem; }
+  .product-card .card-name { font-size: 0.75rem; margin-bottom: 0.2rem; }
+  .product-card .card-benefit { font-size: 0.6rem; margin-bottom: 0.6rem; line-height: 1.3; }
+  .product-card .tag { font-size: 0.5rem; padding: 0.2rem 0.3rem; }
+  .product-card .card-btn { padding: 0.4rem; font-size: 0.65rem; }
+
+  /* Why Herbiva - Double Column */
+  .why-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem; margin-top: 1.5rem; }
+  .why-card { min-width: 0; padding: 1rem 0.6rem; }
+  .why-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+  .why-title { font-size: 0.75rem; margin-bottom: 0.4rem; }
+  .why-desc { font-size: 0.6rem; line-height: 1.4; }
   
-  /* Navbar */
-  nav { 
-    flex-direction: column; 
-    gap: 0.8rem; 
-    padding: 1rem 2%; 
-  }
-  .nav-logo { font-size: 1.4rem; }
-  .nav-links { 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 1rem; 
-  }
-  .nav-links a { font-size: 0.7rem; }
-  .nav-cta { display: none; } 
+  /* Counter Section */
+  .counter-section { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; margin-top: 1.5rem; }
+  .counter-num { font-size: 2rem; }
+  .counter-label { font-size: 0.7rem; }
 
-  /* Hero Section */
-  .hero-title { font-size: 3.5rem; margin-top: 4rem; } 
-  .hero-subtitle { font-size: 0.95rem; padding: 0 1rem; }
-  .hero-btns { flex-direction: column; width: 100%; padding: 0 1rem; }
-  .btn-primary, .btn-secondary { width: 100%; }
-
-  /* About Section - Mobile Order Fix */
-  #about { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 2rem; 
-    padding: 4rem 5%; 
-  }
-  
-  .reveal-left {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .reveal-left > .about-tag,
-  .reveal-left > .section-title,
-  .reveal-left > .about-text {
-    order: 1; 
-  }
-
-  .jar-visual { 
-    display: flex; 
-    order: 2; 
-    transform: scale(0.85); 
-    margin: 1rem 0;
-  } 
-
-  .about-stats { 
-    order: 3; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 1.5rem; 
-    margin-top: 1rem; 
-    width: 100%;
-  }
-
-  .stat-box { 
-    border-left: none; 
-    border-top: 2px solid var(--gold); 
-    padding-left: 0; 
-    padding-top: 1rem; 
-    text-align: center; 
-  }
-  .stat-num { font-size: 1.8rem; }
-
-  /* Process Timeline Vertical */
-  .process-timeline { flex-direction: column; gap: 2rem; padding-left: 10px; }
-  .process-line { 
-    width: 2px; height: 100%; left: 22px; top: 0; 
-    background: linear-gradient(to bottom, var(--gold), transparent);
-  }
-  .process-step { padding-top: 0; padding-left: 60px; text-align: left; }
-  .step-dot { 
-    top: 0; left: 0; transform: none; 
-    width: 2.2rem; height: 2.2rem; font-size: 0.8rem; 
-  }
-  .process-step:hover .step-dot { transform: scale(1.1); }
-  .step-icon { margin-bottom: 0.2rem; font-size: 1.8rem; }
-
-  /* Counters Section */
-  .counter-section { grid-template-columns: 1fr; gap: 2.5rem; }
+  /* Process */
+  .process-timeline { flex-direction: column; gap: 1.5rem; padding-left: 10px; margin-top: 2rem; }
+  .process-line { width: 2px; height: 100%; left: 22px; top: 0; }
+  .process-step { padding-top: 0; padding-left: 50px; text-align: left; }
+  .step-dot { top: 0; left: 0; transform: none; width: 1.8rem; height: 1.8rem; font-size: 0.7rem; border-width: 2px; }
+  .step-icon { font-size: 1.5rem; margin-bottom: 0.2rem; }
+  .step-name { font-size: 0.8rem; }
+  .step-desc { font-size: 0.65rem; }
 
   /* Testimonials */
-  .testimonials-track { 
-    animation: none; 
-    overflow-x: auto; 
-    scroll-snap-type: x mandatory; 
-    padding-bottom: 1.5rem; 
-  }
-  .testimonial-card { min-width: 280px; scroll-snap-align: center; padding: 1.5rem; }
+  .testimonials-track { animation: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 1rem; gap: 1rem; }
+  .testimonial-card { min-width: 240px; scroll-snap-align: center; padding: 1.2rem; }
+  .quote-mark { font-size: 3rem; margin-bottom: 0.5rem; }
+  .testimonial-text { font-size: 0.75rem; margin-bottom: 0.8rem; }
+  .testimonial-author { font-size: 0.75rem; }
+  .testimonial-role { font-size: 0.6rem; }
 
   /* Gallery */
-  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-  .gi-1, .gi-2, .gi-3, .gi-4, .gi-5 { grid-row: auto; height: 160px; }
-  .gallery-placeholder { font-size: 3rem; }
-  
-  /* Contact Form & Footer */
-  #contact { grid-template-columns: 1fr; gap: 3rem; }
-  .contact-info { display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .contact-detail { flex-direction: column; align-items: center; gap: 0.5rem; }
-  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 2.5rem; }
-  .social-links, .newsletter-input { justify-content: center; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1.5rem; }
+  .gi-1, .gi-2, .gi-3, .gi-4, .gi-5 { grid-row: auto; height: 120px; }
+  .gallery-placeholder { font-size: 2.5rem; }
+  .gallery-overlay { font-size: 0.65rem; }
 
-  /* Disable Custom Cursor on Mobile */
+  /* FAQ */
+  .faq-q { font-size: 0.8rem; padding: 1rem 0; }
+  .faq-icon { font-size: 1.2rem; }
+
+  /* Contact */
+  #contact { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-detail { flex-direction: column; align-items: center; gap: 0.3rem; margin-bottom: 1.2rem; }
+  .contact-icon { width: 35px; height: 35px; font-size: 1rem; }
+  .contact-label { font-size: 0.65rem; }
+  .contact-value { font-size: 0.8rem; }
+  .contact-form { padding: 1.5rem; }
+  .form-input { padding: 0.7rem 1rem; font-size: 0.8rem; }
+  .form-label { font-size: 0.75rem; top: 0.7rem; }
+  .form-input:focus ~ .form-label, .form-input:not(:placeholder-shown) ~ .form-label { top: -0.4rem; font-size: 0.65rem; }
+  .form-btn { padding: 0.8rem; font-size: 0.75rem; }
+
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; margin-bottom: 2rem; }
+  footer { padding: 3rem 4% 1.5rem; }
+  .footer-brand .nav-logo { font-size: 1.2rem; }
+  .footer-desc { font-size: 0.75rem; margin: 0 auto; max-width: 100%;}
+  .footer-title { font-size: 0.75rem; margin-bottom: 0.8rem;}
+  .footer-links a { font-size: 0.7rem; }
+  .nl-input, .nl-btn { font-size: 0.7rem; padding: 0.6rem; }
+  .social-links { justify-content: center; }
+  .social-link { width: 32px; height: 32px; font-size: 0.85rem; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; font-size: 0.65rem; padding-top: 1rem; }
+
+  /* Custom Cursor Disable */
   .custom-cursor, .cursor-dot { display: none !important; }
 }

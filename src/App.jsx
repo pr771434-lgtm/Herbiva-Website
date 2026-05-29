@@ -36,7 +36,7 @@ export default function App() {
       });
     });
 
-    // 2. SCROLL REVEAL (Updated for Mobile)
+    // 2. SCROLL REVEAL
     const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -45,7 +45,6 @@ export default function App() {
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px 0px 0px' }); 
-    // rootMargin 0px kiya hai taki mobile pe perfectly trigger ho
     
     reveals.forEach(el => observer.observe(el));
 
@@ -114,14 +113,12 @@ export default function App() {
       });
     });
 
-    // Cleanup listeners on unmount
     return () => {
       document.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  // Form Submit Handler
   const handleSubmit = () => {
     setFormBtnText('Sending...');
     setTimeout(() => {
@@ -134,7 +131,6 @@ export default function App() {
     }, 1500);
   };
 
-  // FAQ Toggle Handler
   const toggleFaq = (e) => {
     const item = e.currentTarget.parentElement;
     const isOpen = item.classList.contains('open');
@@ -148,7 +144,6 @@ export default function App() {
     }
   };
 
-  // Generate Arrays for Background Elements
   const particles = Array.from({ length: 60 }).map((_, i) => ({
     id: i,
     size: Math.random() * 6 + 2,
@@ -185,10 +180,10 @@ export default function App() {
         ))}
       </div>
 
-      {/* NAVBAR */}
       <nav id="navbar">
         <div className="nav-logo">HERB<span>IVA</span></div>
         <ul className="nav-links">
+          <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#process">Process</a></li>
@@ -198,7 +193,6 @@ export default function App() {
         <button className="nav-cta">Shop Now</button>
       </nav>
 
-      {/* HERO */}
       <section id="hero">
         <div className="hero-particles" id="particles">
           {particles.map(p => (
@@ -223,7 +217,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ABOUT */}
       <section id="about">
         <div className="reveal-left">
           <div className="about-tag">✦ Our Story</div>
@@ -285,7 +278,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* PRODUCTS */}
       <section id="products">
         <div className="section-header reveal">
           <span className="about-tag">✦ Our Range</span>
@@ -345,7 +337,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* WHY US */}
       <section id="why">
         <div className="section-header reveal" style={{ textAlign: 'center', marginBottom: 0 }}>
           <span className="about-tag">✦ Why Herbiva</span>
@@ -389,7 +380,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* PROCESS */}
       <section id="process">
         <div className="section-header reveal">
           <span className="about-tag">✦ How We Make It</span>
@@ -430,7 +420,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
       <section id="testimonials">
         <div className="section-header reveal">
           <span className="about-tag">✦ What They Say</span>
@@ -458,7 +447,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* GALLERY */}
       <section id="gallery">
         <div className="section-header reveal">
           <span className="about-tag">✦ Our World</span>
@@ -488,7 +476,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section id="faq">
         <div className="section-header reveal" style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 2rem' }}>
           <span className="about-tag">✦ Got Questions?</span>
@@ -510,7 +497,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* CONTACT */}
       <section id="contact">
         <div className="contact-info reveal-left">
           <div className="about-tag">✦ Get In Touch</div>
@@ -521,6 +507,13 @@ export default function App() {
             <div>
               <div className="contact-label">Email</div>
               <div className="contact-value">hello@herbiva.com</div>
+            </div>
+          </div>
+          <div className="contact-detail">
+            <div className="contact-icon">📍</div>
+            <div>
+              <div className="contact-label">Location</div>
+              <div className="contact-value">Green Valley, Indore, MP 452001</div>
             </div>
           </div>
         </div>
@@ -541,7 +534,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer>
         <div className="footer-grid">
           <div className="footer-brand">
@@ -551,8 +543,10 @@ export default function App() {
           <div>
             <div className="footer-title">Quick Links</div>
             <ul className="footer-links">
-              <li><a href="#about">About Us</a></li>
+              <li><a href="#hero">Home</a></li>
               <li><a href="#products">Products</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
         </div>
